@@ -1,0 +1,257 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>编程体验页面</title>
+
+    <link rel="icon" href="../docs/icons/favicon/icon.svg">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--Blockly-->
+    <script src="../libs/blockly/blockly_compressed.js"></script>
+    <script src="../libs/blockly/blocks_compressed.js"></script>
+    <script src="../libs/blockly/javascript_compressed.js"></script>
+    <script src="../libs/blockly/en.js"></script>
+
+    <!--blockly-gamepad-->
+    <script src="../libs/gamepad/gamepad.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!--title-->
+        <span class="title">
+            <div>
+            </div>
+        </span>
+        <vr></vr>
+        <!--start switch-->
+        <!-- <span class="switch_span">开始</span>
+        <label class="switch">
+            <input id="start_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr> -->
+        <!--类别切换-->
+        <!-- <span class="switch_span">类别</span>
+        <label class="switch">
+            <input id="categories_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr> -->
+        <!--水平按钮-->
+        <span class="switch_span">关卡</span>
+        <button class="button level" id="level_1">1</button>  
+        <button class="button level" id="level_2">2</button>
+        <button class="button level" id="level_3">3</button>
+        <button class="button level" id="level_4">4</button>
+        <button class="button level" id="level_5">5</button>
+        
+        <vr></vr>
+    </header>
+
+    <main>
+        <!--game div-->
+        <div id="game-div">
+            <!--game 1-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="1" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="./images/migong1.jpg" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish1" xlink:href="./images/zhuzi.png" height="34" width="20" x="215" y="146"></image>
+                <clipPath id="pegmanClipPath1">
+                    <rect id="clipRect1" width="49" height="52" x="101" y="191"></rect>
+                </clipPath>
+                <image id="pegman1" xlink:href="./images/panda.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath1)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 2-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="2" width="400px"
+                height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/maze2.jpg" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish2" xlink:href="./images/zhuzi.png" height="34" width="20" x="215" y="46"></image>
+                <clipPath id="2pegmanClipPath">
+                    <rect id="clipRect2" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman2" xlink:href="./images/panda.png" height="52" width="1029"
+                    clip-path="url(#2pegmanClipPath)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!-- game 3 -->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="3" width="400px"
+            height="400px" viewBox="0 0 400 400">
+            <image xlink:href="./images/maze3.jpg" class="maze" x="0" y="-1" width="400" height="399"></image>
+            <image id="finish3" xlink:href="./images/zhuzi.png" height="34" width="20" x="310" y="200"></image>
+            <clipPath id="3pegmanClipPath">
+                <rect id="clipRect3" width="49" height="52" x="101" y="191"></rect>
+            </clipPath>
+            <image id="pegman3" xlink:href="./images/panda.png" height="52" width="1029"
+                clip-path="url(#3pegmanClipPath)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+        </svg>
+        <!-- game 4 -->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="4" width="400px"
+        height="400px" viewBox="0 0 400 400">
+        <image xlink:href="./images/maze4.jpg" class="maze" x="0" y="0" width="400" height="400"></image>
+        <image id="finish2" xlink:href="./images/zhuzi.png" height="34" width="20" x="258" y="55"></image>
+        <clipPath id="pegmanClipPath4">
+            <rect id="clipRect4" width="49" height="52" x="51" y="291"></rect>
+        </clipPath>
+        <image id="pegman4" xlink:href="./images/panda.png" height="52" width="1029"
+            clip-path="url(#pegmanClipPath4)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+    </svg>
+    <!-- game 5 -->
+       <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="5" width="400px"
+       height="400px" viewBox="0 0 400 400">
+       <image xlink:href="./images/maze5.jpg" class="maze" x="0" y="-1" width="400" height="399"></image>
+       <image id="finish1" xlink:href="./images/zhuzi.png" height="34" width="20" x="160" y="200"></image>
+       <clipPath id="pegmanClipPath5">
+         <rect id="clipRect5" width="49" height="52" x="101" y="191"></rect>
+    </clipPath>
+    <image id="pegman5" xlink:href="./images/panda.png" height="52" width="1029"
+        clip-path="url(#pegmanClipPath5)" x="-95" y="191" transform="rotate(0, 0, 0)"></image>
+    </svg>
+            <!--容器 div-->
+            <div id="capacity" style="display: none;">你还有 <span id="capacityNumber">10</span> 个块数.</div>
+            <!--buttons-->
+            <div class="buttons">
+                <button id="play" class="button green" style="grid-area: 1">开始</button>
+                <button id="pause" class="button green" style="grid-area: 2">暂停</button>
+                <hr>
+                <button id="forward" class="button blue" style="grid-area: 2">向前</button>
+                <button id="backward" class="button blue" style="grid-area: 3">向后</button>
+                <hr>
+                <button id="load" class="button violet" style="grid-area: 1"> &nbsp;加载&ensp;代码</button>
+            </div>
+        </div>
+        <!--工作区分区-->
+        <div id="blockly-editor">
+            <div id="blockly-div"></div>
+            <!--无类别工具箱-->
+            <xml id="toolbox" style="display: none">
+                <block type="move"></block>
+                <block type="turn"></block>
+                <block type="turn">
+                    <field name="DIRECTION">3</field>
+                </block>
+                <block type="repeat_until"></block>
+                <block type="if_path"></block>
+                <block type="if_else_path"></block>
+            </xml>
+            <!--工具箱whit类别-->
+            <xml id="toolbox_c" style="display: none">
+                <category name="Controls" colour="285">
+                    <block type="move"></block>
+                    <block type="turn"></block>
+                    <block type="turn">
+                        <field name="DIRECTION">3</field>
+                    </block>
+                </category>
+                <category name="Logic" colour="120">
+                    <block type="repeat_until"></block>
+                    <block type="if_path"></block>
+                    <block type="if_else_path"></block>
+                </category>
+            </xml>
+        </div>
+    </main>
+
+    <!--加载全局参数-->
+    <script>
+        // 获取url中的参数
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        // 全局变量
+        let {
+            start,
+            categories,
+            id
+        } = getUrlVars()
+
+        // 更新参数
+        start = start != undefined
+        categories = categories != undefined
+        id = id ? id : 1
+        console.log(id)
+
+        // 更新跳棋
+        if (start) document.getElementById('start_check').checked = true
+        if (categories) document.getElementById('categories_check').checked = true
+
+        // 设置工具箱
+        const toolbox = document.getElementById(categories ? 'toolbox_c' : 'toolbox')
+    </script>
+
+    <!--scripts-->
+    <script src="js/levels.js"></script>
+    <script src="js/gui.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/index.js"></script>
+
+    <!--将事件链接到按钮-->
+    <script>
+        // link the buttons
+        document.getElementById('load').onclick = () => game.loadCode() + console.clear()  //clear清除缓存
+        document.getElementById('level_1').onclick = () => game.loadLevel(levels[id = 0]) + console.clear()
+        document.getElementById('level_2').onclick = () => game.loadLevel(levels[id = 1]) + console.clear()
+        document.getElementById('level_3').onclick = () => game.loadLevel(levels[id = 2]) + console.clear()
+        document.getElementById('level_4').onclick = () => game.loadLevel(levels[id = 3]) + console.clear()
+        document.getElementById('level_5').onclick = () => game.loadLevel(levels[id = 4]) + console.clear()
+
+        document.getElementById('forward').onclick = () => gamepad.forward() + gui.removeAnimation()
+        document.getElementById('backward').onclick = () => gamepad.backward() + gui.removeAnimation()
+        document.getElementById('play').onclick = () => gamepad.play()
+        document.getElementById('pause').onclick = () => gamepad.pause()
+    </script>
+
+    <!--剩余块-->
+    <script>
+        // 更新剩余块
+        Blockly.getMainWorkspace().addChangeListener(() => {
+            let capacity = Blockly.getMainWorkspace().remainingCapacity()
+            if (capacity != Infinity) {
+                // 显示容量div
+                document.getElementById('capacity').style.display = 'block'
+                document.getElementById('capacityNumber').innerHTML = capacity
+            } else {
+                // 隐藏容量分区
+                document.getElementById('capacity').style.display = 'none'
+            }
+        })
+    </script>
+
+    <!--航行-->
+    <script>
+        // get the url
+        const getUrl = (start, categories) => {
+            let url = []
+
+            if (start) url.push('start=true')
+            if (categories) url.push('categories=true')
+            url.push('id=' +id)
+
+            return 'index.html?' + url.join('&')
+        }
+
+        // 添加处理程序
+        document.getElementById('start_check').onclick =
+            (event) => window.location.href = getUrl(event.target.checked, categories)
+
+        document.getElementById('categories_check').onclick =
+            (event) => window.location.href = getUrl(start, event.target.checked)
+
+        // 显示容量div
+        console.log(id)
+        if (id == 2) document.getElementById('capacity').style.display = 'block'
+
+    </script>
+   
+    <!--github link-->
+    <script>GitHub.inject(document.body)</script>
+</body>
+
+</html>
+
